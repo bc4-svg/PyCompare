@@ -1,17 +1,21 @@
 import yaml
 
+from Reader.XMLReader import XMLReader
 
 class PyCompare:
     @staticmethod
     def compare(configFiles=[""]):
-        compareNodes=PyCompare._createCompareConfig(configFiles)
+        compareNodes=PyCompare.__createCompareConfig(configFiles)
         print("these values will be compared",compareNodes)
+
+        xmlRead=XMLReader(configFiles[0])
+        print(xmlRead.propertyByIdName("irgendwas1"))
     
     @staticmethod
-    def _createCompareConfig(configFiles):
+    def __createCompareConfig(configFiles):
         compareNodes=[]
         for configPath in configFiles:
-            config=yaml.load(open(configPath,"r"))
+            config=yaml.safe_load(open(configPath,"r"))
             try:
                 compareNodes=PyCompare.__extractCompareConfig(config["props"])
             except yaml.YAMLError as e:
@@ -32,3 +36,7 @@ class PyCompare:
             if("props" in node):
                 compareNames+=PyCompare.__extractCompareConfig(node["props"])
         return compareNames
+
+print("befeore")
+PyCompare.compare(["test.yaml"])
+print("after")

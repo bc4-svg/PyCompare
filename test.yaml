@@ -1,0 +1,19 @@
+props:
+  - bKeep: false
+    bCompare: true
+    name: "irgendwas0"
+    name_alias: "geheim"
+    props:
+      - bKeep: false
+        bCompare: true
+        name: "irgendwas1"
+        name_alias: "gehim1"
+  - bKeep: false
+    bCompare: true
+    name: "irgendwas2"
+    name_alias: "geheim2"
+    props:
+      - bKeep: false
+        name_alias: "geheim3"
+        bCompare: false
+        name: "irgendwas3"
